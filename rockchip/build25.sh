@@ -59,6 +59,7 @@ PACKAGES="$PACKAGES kmod-tun"
 PACKAGES="$PACKAGES ip6tables"
 PACKAGES="$PACKAGES kmod-ipt-nat6"
 PACKAGES="$PACKAGES ip6tables-mod-nat"
+PACKAGES="$PACKAGES odhcp6c"
 
 # 判断是否需要编译 Docker 插件
 if [ "$INCLUDE_DOCKER" = "yes" ]; then
