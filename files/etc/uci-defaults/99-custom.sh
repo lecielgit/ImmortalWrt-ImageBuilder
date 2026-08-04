@@ -215,5 +215,12 @@ EOF
 else
     echo "未检测到 Docker，跳过防火墙配置。"
 fi
+# 修改默认后台管理 IP 地址为 192.168.11.1
+uci set network.lan.ipaddr='192.168.11.1'
+uci commit network
+# 自动移除 LuCI 的 IPv6 监听端口
+uci del uhttpd.main.listen_http=$(uci get uhttpd.main.listen_http 2>/dev/null | grep -o '\[::\]:[0-9]*')
+uci del uhttpd.main.listen_https=$(uci get uhttpd.main.listen_https 2>/dev/null | grep -o '\[::\]:[0-9]*')
+uci commit uhttpd
 
 exit 0
